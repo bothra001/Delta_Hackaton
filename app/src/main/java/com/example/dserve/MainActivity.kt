@@ -1,6 +1,7 @@
 package com.example.dserve
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -23,6 +24,14 @@ class MainActivity : ComponentActivity() {
             DserveTheme {
                 val navController= rememberNavController()
                 AppNavigator(navController)
+                fun onPaymentSuccess(razorpayPaymentID: String?) {
+                    Toast.makeText(this, "Payment Success: $razorpayPaymentID", Toast.LENGTH_SHORT).show()
+                }
+
+                fun onPaymentError(code: Int, response: String?) {
+                    Toast.makeText(this, "Payment Failed: $response", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
     }

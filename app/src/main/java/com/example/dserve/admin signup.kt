@@ -97,6 +97,8 @@ fun Admsp(navcontroller: NavController){
         Button(onClick = {
             coroutineScope.launch {
                 try {
+                    Log.w("tag1","abcd")
+                    Log.w("tag2 ","$username,$password")
                     val response = RetrofitInstance.api.signup(AdminSignupRequest(username, password))
                     when {
                         response.isSuccessful -> {
